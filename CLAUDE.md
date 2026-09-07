@@ -72,6 +72,6 @@ the Console — no DOM) → **C7** DOM + events → **C8** capstone portfolio.
 
 ## Current state
 
-Lessons exist for Classes 1–3. Assignment breakout folders exist for Classes 1–2.
-`assignments.md` covers all 8. Not yet written: Class 4–8 lessons, Class 3–8 assignment folders.
+Lessons exist for Classes 1–3. Assignment breakout folders exist for Classes 1–3.
+`assignments.md` covers all 8. Not yet written: Class 4–8 lessons, Class 4–8 assignment folders.
 When adding a class, also update the status lines in `README.md` and the "8 classes" table there.
