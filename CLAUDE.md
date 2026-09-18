@@ -25,14 +25,14 @@ code sample, hand-verify it renders correctly that way.
 1. **`frontend-crash-course-palmtechniq.md`** — the master syllabus. Source of truth for what
    each class covers, its hands-on exercise, and its homework. Every other file must stay
    consistent with this outline.
-2. **`class-<n>-<topic>.md`** — self-guided lesson read-throughs (Classes 1–3 written; 4–8 not
+2. **`class-<n>-<topic>.md`** — self-guided lesson read-throughs (Classes 1–4 written; 5–8 not
    yet). Fixed internal format: numbered sections split by `---`, "Practice Now" + "✅ Checkpoint"
    callouts, a Troubleshooting table, a "Self-Check" question list, a "Homework" section, a
    "What's Next" section.
 3. **`assignments.md`** — the single-file assignment bank covering all 8 classes. Difficulty key
    (⭐ / ⭐⭐ / ⭐⭐⭐), 🧵 = "portfolio thread" (feeds the Class 8 capstone). Each class section is
    grouped Warm-up / Core / Challenge / Debug-it / Written questions.
-4. **`class-<n>-assignments/`** — the per-class breakout of the same assignments (Classes 1–2
+4. **`class-<n>-assignments/`** — the per-class breakout of the same assignments (Classes 1–4
    done). Contains `README.md` (index + scope list + done-checklist), individual briefs
    `01`–`19`, and `work/README.md`. **The `class-<n>-assignments/` folder and the Class `<n>`
    section of `assignments.md` are two views of the same content — edit both when either
@@ -49,8 +49,10 @@ nesting — no CSS, no `class`/`id`, no `div`/`span`, no semantic tags, no forms
 **C2** semantic structure + tables + forms/validation (still no CSS) →
 **C3** CSS basics (external stylesheet, selectors, box model, colour, typography, `display` —
 no Flexbox/Grid/media queries/position/animation) →
-**C4** Flexbox → **C5** Grid + responsive/media queries → **C6** JS basics (logic only, run in
-the Console — no DOM) → **C7** DOM + events → **C8** capstone portfolio.
+**C4** Flexbox (`display: flex`, `flex-direction`, main/cross axis, `justify-content`,
+`align-items`/`align-self`, `flex-wrap`, `gap`, `flex-grow`/`shrink`/`basis`, `order` — no Grid,
+media queries, or `position`) → **C5** Grid + responsive/media queries → **C6** JS basics (logic
+only, run in the Console — no DOM) → **C7** DOM + events → **C8** capstone portfolio.
 
 ## Conventions
 
@@ -72,6 +74,6 @@ the Console — no DOM) → **C7** DOM + events → **C8** capstone portfolio.
 
 ## Current state
 
-Lessons exist for Classes 1–3. Assignment breakout folders exist for Classes 1–3.
-`assignments.md` covers all 8. Not yet written: Class 4–8 lessons, Class 4–8 assignment folders.
+Lessons exist for Classes 1–4. Assignment breakout folders exist for Classes 1–4.
+`assignments.md` covers all 8. Not yet written: Class 5–8 lessons, Class 5–8 assignment folders.
 When adding a class, also update the status lines in `README.md` and the "8 classes" table there.
