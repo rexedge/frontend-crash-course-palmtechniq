@@ -30,7 +30,7 @@ to that point. Each one lists its "in scope / not yet" tags and properties expli
 | 2 | HTML Deep Dive: Structure & Forms | [lesson](class-2-html-deep-dive-structure-and-forms.md) | [folder](class-2-assignments/) · [in bank](assignments.md#class-2--semantic-html--forms) |
 | 3 | CSS Basics & the Box Model | [lesson](class-3-css-basics.md) | [folder](class-3-assignments/) · [in bank](assignments.md#class-3--css-basics--the-box-model) |
 | 4 | CSS Layout: Flexbox | [lesson](class-4-css-layout-flexbox.md) | [folder](class-4-assignments/) · [in bank](assignments.md#class-4--css-layout-flexbox) |
-| 5 | CSS Grid & Responsive Design | _not yet written_ | [in bank](assignments.md#class-5--css-grid--responsive-design) |
+| 5 | CSS Grid & Responsive Design | [lesson](class-5-css-grid-and-responsive-design.md) | [folder](class-5-assignments/) · [in bank](assignments.md#class-5--css-grid--responsive-design) |
 | 6 | JavaScript Basics | _not yet written_ | [in bank](assignments.md#class-6--javascript-basics) |
 | 7 | JavaScript & the DOM | _not yet written_ | [in bank](assignments.md#class-7--javascript--the-dom) |
 | 8 | Capstone: Portfolio Project | _not yet written_ | [in bank](assignments.md#class-8--capstone-portfolio-project) |
@@ -49,8 +49,8 @@ to that point. Each one lists its "in scope / not yet" tags and properties expli
 
 ## Status
 
-Lessons written: **Classes 1–4**. Assignment breakout folders: **Classes 1–4**.
-`assignments.md` covers **all 8**. Classes 5–8 lessons and folders are in progress.
+Lessons written: **Classes 1–5**. Assignment breakout folders: **Classes 1–5**.
+`assignments.md` covers **all 8**. Classes 6–8 lessons and folders are in progress.
 
 ## Attribution
 

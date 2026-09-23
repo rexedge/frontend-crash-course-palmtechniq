@@ -682,8 +682,8 @@ Lay out 9 cards, 3 per row, evenly spaced, using only Flexbox + `flex-wrap` + `g
 
 # Class 5 — CSS Grid & Responsive Design
 
-**In scope (adds to Class 4):** `display: grid`, `grid-template-columns` / `grid-template-rows`, `fr` unit, `repeat()`, `minmax()`, `auto-fit` / `auto-fill`, `gap`, `grid-column` / `grid-row` spanning, `grid-template-areas`, `place-items` / `place-content`, `@media` queries (`min-width` / `max-width`), mobile-first methodology, the viewport `<meta>` tag, relative units for responsiveness (`%`, `vw`, `vh`, `rem`, `clamp()`).
-**Still out of scope:** `position: sticky/fixed` deep dives, CSS animations, JS.
+**In scope (adds to Class 4):** `display: grid`, `grid-template-columns` / `grid-template-rows` / `grid-auto-rows`, `fr` unit, `repeat()`, `minmax()`, `auto-fit` / `auto-fill`, `gap`, `grid-column` / `grid-row` spanning (line numbers, `-1`, `span`), `grid-template-areas` + `grid-area`, `place-items` / `place-content`, `@media` queries (`min-width` / `max-width`), mobile-first methodology, the viewport `<meta>` tag, relative units for responsiveness (`%`, `rem`, `em`, `vw`, `vh`, `clamp()`), flexible images (`max-width: 100%`, `aspect-ratio`, `object-fit`).
+**Still out of scope:** `position` (any value), transitions / animations / `transform`, JS.
 
 ### Warm-up drills
 
@@ -697,13 +697,13 @@ One grid, try these column templates one at a time and describe each result: `20
 `grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))`. Put 8 cards in it. Resize the window and watch columns add/remove automatically. Write one sentence on what `minmax(200px, 1fr)` is doing.
 
 **5.4 — Spanning** ⭐
-A 4-column grid with 8 items. Make item 1 span 2 columns (`grid-column: span 2`), item 5 span the full width (`grid-column: 1 / -1`), item 8 span 2 rows. Observe how the rest flow around.
+A 4-column grid (`grid-auto-rows: 80px`, so row spans are visible) with 8 items. Make item 1 span 2 columns (`grid-column: span 2`), item 3 span 2 rows (`grid-row: span 2`), item 5 span the full width (`grid-column: 1 / -1`). Predict on paper first, then check with the dev-tools grid overlay. Explain the two empty cells in row 2.
 
 **5.5 — Named areas** ⭐
 Build a page skeleton with `grid-template-areas` for `header` / `sidebar` / `content` / `footer` (header and footer full width, sidebar + content side by side). Assign each landmark with `grid-area`.
 
 **5.6 — Media query drill** ⭐
-One paragraph. Default `font-size: 1rem`. Add `@media (min-width: 600px) { font-size: 1.125rem; }` and `@media (min-width: 900px) { font-size: 1.25rem; }`. Resize and confirm the jumps. Then reason about why `min-width` queries stack cleanly in mobile-first order.
+One paragraph. Default `p { font-size: 1rem; }`. Add `@media (min-width: 600px) { p { font-size: 1.125rem; } }` and `@media (min-width: 900px) { p { font-size: 1.25rem; } }` — note the full rule, selector and all, inside each query. Resize and confirm the jumps. Then swap the two queries' order, check 1200px, and reason about why `min-width` queries stack cleanly in ascending (mobile-first) order.
 
 **5.7 — The meta tag** ⭐
 Open one of your earlier pages on a phone (or dev-tools device mode) **without** `<meta name="viewport" content="width=device-width, initial-scale=1">`. Then add it. Note the difference. Never forget it again.
@@ -711,32 +711,34 @@ Open one of your earlier pages on a phone (or dev-tools device mode) **without**
 ### Core assignments
 
 **5.8 — Responsive photo gallery** ⭐⭐ 🧵
-`class-5/gallery/`: a gallery of 12 images.
-- [ ] `<meta viewport>` present
+`class-5/gallery/`: a gallery of 12 images of **mixed shapes** (wide, tall, square — e.g. `https://picsum.photos/800/600?random=1`, `…/600/800?random=2`).
+- [ ] `<meta viewport>` present; `img` reset (`max-width: 100%; height: auto; display: block`)
 - [ ] grid with `repeat(auto-fit, minmax(220px, 1fr))` and a `gap`
 - [ ] images: `width: 100%`, fixed aspect via `aspect-ratio: 1 / 1` and `object-fit: cover`
-- [ ] reflows from ~4 columns on desktop down to 1 column on a phone with **no media query needed**
+- [ ] the column count goes from ~5 on desktop down to 1 on a phone with **no media query**
+- [ ] one mobile-first `@media (min-width: 700px)` that makes the first photo "featured" (`grid-column: span 2; grid-row: span 2`) — the span lives inside the query, because on a one-column phone grid it would force an extra column and a horizontal scrollbar
 - [ ] a heading and short intro above the grid, constrained to a readable width
 
 **5.9 — Full page layout with grid-template-areas** ⭐⭐ 🧵
-A complete page: `<header>` (full width), `<nav>` sidebar (left, ~220px), `<main>` (fills rest), `<footer>` (full width). Use `grid-template-areas`. Then add a `@media (max-width: 768px)` block that redefines the areas so the sidebar stacks **above** the main content and everything is one column.
+A complete page: `<header>` (full width), `<nav>` sidebar (left, ~220px), `<main>` (fills rest), `<footer>` (full width). Use `grid-template-areas`, written **mobile-first**: the base map is one column (`"header" "sidebar" "content" "footer"`), with the nav links in a wrapping flex row; then a `@media (min-width: 768px)` block adds `grid-template-columns: 220px 1fr`, redraws the map with the sidebar beside the content, and turns the nav into a column.
 
 **5.10 — Dashboard card grid** ⭐⭐
-A stats dashboard: a grid of "stat" cards. On desktop: 4 columns. At `max-width: 1000px`: 2 columns. At `max-width: 600px`: 1 column. Two of the cards ("Revenue chart", "Recent activity") span 2 columns on desktop. Use media queries.
+A stats dashboard: a grid of "stat" cards, written **desktop-first on purpose** (so you feel the difference — 5.14 flips it). On desktop: 4 columns. At `max-width: 1000px`: 2 columns. At `max-width: 600px`: 1 column. Two of the cards ("Revenue chart", "Recent activity") span 2 columns on desktop — and the 600px query must reset them (`grid-column: auto`), or they force a second column on phones.
 
 **5.11 — Magazine / bento layout** ⭐⭐
-A 12-column grid (or 6) where articles have different sizes: one hero spanning 8 columns and 2 rows, a couple spanning 4, several spanning 3. It should collapse to a single column under 700px.
+A 12-column grid where articles have different sizes: one hero spanning 8 columns and 2 rows, two spanning 4 (stacked beside the hero), four spanning 3 (a row underneath). Mobile-first: the base is a single column with no spans; the 12-column grid, `grid-auto-rows: minmax(160px, auto)`, and every span live inside `@media (min-width: 700px)`. Check each row adds up to 12 so there are no holes.
 
 **5.12 — Calendar month** ⭐⭐
-A 7-column grid (`repeat(7, 1fr)`) for the days of a month. A header row of weekday names, then ~35 day cells (some empty for the offset at the start of the month). Cells are square-ish, numbered, with a `gap`. Under 500px, shrink text and padding via a media query rather than changing column count.
+A 7-column grid (`repeat(7, 1fr)`) for the days of a month: a `<ul>` of weekday names and an `<ol>` of days, both on the same template so they line up. Start day 1 under the right weekday with `grid-column: <n>` on it (no empty placeholder cells). Cells are square (`aspect-ratio: 1 / 1`), numbered, with a `gap`. Keep 7 columns at every width; a mobile-first `@media (min-width: 500px)` only makes the text and padding bigger.
 
 **5.13 — Make About Me + Contact responsive** ⭐⭐ 🧵
 Per the course homework. Revisit your styled About Me and Contact pages:
 - [ ] add/confirm the viewport meta tag
 - [ ] give the content a `max-width` and fluid side padding (`padding: 0 clamp(16px, 5vw, 48px)`)
-- [ ] the About Me "Things I Like" / "Goals" become a 2-column grid on desktop, 1 column under 640px
-- [ ] the contact form's two-column field layout (from Class 4) collapses to one column under 640px
+- [ ] the About Me "Things I Like" / "Goals" (wrapped in one `<div class="two-col">`) stack on phones and become a 2-column grid from `min-width: 640px`
+- [ ] the contact form's two-column field layout (from Class 4) is one column on phones and two from `min-width: 640px` — keep Flexbox (full-width fields in the base, the 45% basis inside the query) or switch to Grid (`1fr` → `1fr 1fr`, full-width fields `grid-column: 1 / -1`)
 - [ ] images never overflow (`max-width: 100%`)
+- [ ] every media query is `min-width` (mobile-first)
 - [ ] test at 375px, 768px, 1280px
 
 **5.14 — Mobile-first rebuild** ⭐⭐
@@ -785,44 +787,81 @@ Take your Class 4 pricing table (Flexbox) and rebuild it with Grid. Take your Cl
 
 **(a)** The grid has only one column no matter what:
 ```css
-.grid { display: grid; grid-template: 1fr 1fr 1fr; }
+.grid { display: grid; grid-template-columns: 1fr, 1fr, 1fr; }
 ```
-<details><summary>Show answer</summary>`grid-template` shorthand with just `1fr 1fr 1fr` sets *rows*, not columns. Use `grid-template-columns: 1fr 1fr 1fr` (or `repeat(3, 1fr)`).</details>
+<details><summary>Show answer</summary>Track sizes are separated by **spaces**, not commas. With commas the value is invalid, so the whole declaration is thrown away (dev tools shows it struck through with a ⚠ icon) and the grid falls back to one column. Write `1fr 1fr 1fr` or `repeat(3, 1fr)` — the comma in `repeat()` separates the count from the size.</details>
 
-**(b)** `grid-column: 1 / 3` spans only one column:
+**(b)** The banner covers two columns, not three:
 ```css
-.item { grid-column: 1 / 3; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.banner { grid-column: 1 / 3; }
 ```
-…in a grid that only has 2 columns; the author expected it to span "1 through 3 = three columns".
-<details><summary>Show answer</summary>Line numbers, not counts. `1 / 3` means from line 1 to line 3 = **2** columns. For 3 columns use `1 / 4` or `1 / span 3`.</details>
+…the author wanted it to cover the first **three** columns.
+<details><summary>Show answer</summary>Line numbers, not counts. `1 / 3` means from line 1 to line 3 = **2** columns. For 3 columns use `1 / 4` or `span 3`.</details>
 
-**(c)** Mobile styles are overriding desktop unexpectedly:
+**(c)** Stuck at two columns on a wide desktop:
 ```css
-@media (min-width: 900px) { .col { width: 33%; } }
-@media (min-width: 600px) { .col { width: 50%; } }
+.gallery { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 600px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
 ```
-<details><summary>Show answer</summary>Order matters when specificity is equal. At 1000px both queries match; the *later* rule (`50%`) wins. Put `min-width` queries in **ascending** order so the largest matching one comes last.</details>
+<details><summary>Show answer</summary>Order matters when specificity is equal. At 1000px both queries match; the *later* rule (2 columns) wins. Put `min-width` queries in **ascending** order so the largest matching one comes last.</details>
 
-**(d)** Page looks fine on desktop, zoomed-in and broken on a phone:
-<details><summary>Show answer</summary>Missing `<meta name="viewport" content="width=device-width, initial-scale=1">` in `<head>`. Without it, mobile browsers render at ~980px and scale down.</details>
+**(d)** Fine on desktop; tiny, zoomed-out, and ignoring every media query on a phone:
+```html
+<head>
+  <meta charset="UTF-8">
+  <title>My Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+```
+<details><summary>Show answer</summary>Missing `<meta name="viewport" content="width=device-width, initial-scale=1">` in `<head>`. Without it, mobile browsers lay the page out ~980px wide and scale it down, so media queries see ~980px.</details>
 
-**(e)** `auto-fit` grid collapses all items into a sliver on a wide screen:
+**(e)** Two cards stretch into huge slabs on a wide screen:
 ```css
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 ```
-…and there are only 2 items.
+…and there are only 2 cards.
 <details><summary>Show answer</summary>`auto-fit` collapses empty tracks, letting 2 items stretch across the whole width. If you want them to stay ~200px, use `auto-fill` instead, or cap with `minmax(200px, 300px)`.</details>
+
+**(f)** The page layout falls apart — every area piles up in the same spot:
+```css
+.page {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-areas: "header header" "sidebar content" "footer";
+}
+```
+<details><summary>Show answer</summary>Every row of the map must have the same number of cells; the last row has one, the others two. One bad row makes the whole `grid-template-areas` invalid, so the `grid-area` names point at nothing. Fix: `"footer footer"`.</details>
+
+**(g)** The media query does nothing:
+```css
+.cards { display: grid; gap: 16px; }
+@media (min-width: 768px) {
+  grid-template-columns: repeat(3, 1fr);
+}
+```
+<details><summary>Show answer</summary>No selector inside the query, so the browser doesn't know which element the declaration is for and throws it away. A media query holds complete rules: `@media (min-width: 768px) { .cards { grid-template-columns: repeat(3, 1fr); } }`.</details>
+
+**(h)** A horizontal scrollbar on phones, caused by one photo:
+```css
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.gallery .featured { grid-column: span 2; }
+```
+<details><summary>Show answer</summary>On a phone only one column fits, but `.featured` insists on two, so the browser adds a second column and the grid sticks out past the screen. Move the span inside `@media (min-width: 700px) { … }`.</details>
 
 ### Written questions
 
 1. Grid vs Flexbox in one sentence each — when does each shine?
-2. What does the `fr` unit mean? How is `1fr 2fr` different from `33% 66%`?
+2. What does the `fr` unit mean? How is `1fr 2fr` different from `33% 66%` — especially once there's a `gap`?
 3. Explain `repeat(auto-fit, minmax(200px, 1fr))` in plain English.
-4. `auto-fit` vs `auto-fill` — what's the difference?
+4. `auto-fit` vs `auto-fill` — what's the difference, and when can you actually see it?
 5. Why are grid line numbers a common off-by-one trap? How does `span` avoid it?
-6. What is "mobile-first" and why does it lead to cleaner media-query stacks?
-7. What exactly does the viewport meta tag do?
-8. Name three things that make a page responsive *without* any media queries.
+6. What rules must the strings in `grid-template-areas` follow? What happens if you break one?
+7. What exactly does the viewport meta tag do? What does a phone do without it?
+8. Why use `rem` instead of `px` for font sizes? Why is `font-size: 5vw` on its own a bad idea?
+9. What is "mobile-first", and why does it lead to cleaner media-query stacks?
+10. Name three things that make a page responsive *without* any media queries.
 
 ---
 ---
