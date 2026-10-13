@@ -31,9 +31,9 @@ to that point. Each one lists its "in scope / not yet" tags and properties expli
 | 3 | CSS Basics & the Box Model | [lesson](class-3-css-basics.md) | [folder](class-3-assignments/) · [in bank](assignments.md#class-3--css-basics--the-box-model) |
 | 4 | CSS Layout: Flexbox | [lesson](class-4-css-layout-flexbox.md) | [folder](class-4-assignments/) · [in bank](assignments.md#class-4--css-layout-flexbox) |
 | 5 | CSS Grid & Responsive Design | [lesson](class-5-css-grid-and-responsive-design.md) | [folder](class-5-assignments/) · [in bank](assignments.md#class-5--css-grid--responsive-design) |
-| 6 | JavaScript Basics | _not yet written_ | [in bank](assignments.md#class-6--javascript-basics) |
-| 7 | JavaScript & the DOM | _not yet written_ | [in bank](assignments.md#class-7--javascript--the-dom) |
-| 8 | Capstone: Portfolio Project | _not yet written_ | [in bank](assignments.md#class-8--capstone-portfolio-project) |
+| 6 | JavaScript Basics | [lesson](class-6-javascript-basics.md) | [folder](class-6-assignments/) · [in bank](assignments.md#class-6--javascript-basics) |
+| 7 | JavaScript & the DOM | [lesson](class-7-javascript-and-the-dom.md) | [folder](class-7-assignments/) · [in bank](assignments.md#class-7--javascript--the-dom) |
+| 8 | Capstone: Portfolio Project | [lesson](class-8-capstone-portfolio-project.md) | [folder](class-8-assignments/) · [in bank](assignments.md#class-8--capstone-portfolio-project) |
 
 ## How to use it
 
@@ -44,13 +44,15 @@ to that point. Each one lists its "in scope / not yet" tags and properties expli
 3. **Then:** open `class-<n>-assignments/README.md` (or the Class `<n>` section of
    `assignments.md`) and work the assignments. Build your code in
    `class-<n>-assignments/work/<assignment-slug>/index.html` and open it with Live Server.
-4. **Type everything by hand** — don't paste. Save often, check the browser after every change.
-5. Assignments marked 🧵 feed into the Class 8 capstone — keep those files.
+4. **Type everything by hand** — don't paste. Save often, check the browser after every change
+   (from Class 6 on, that means the dev-tools **Console** too).
+5. Assignments marked 🧵 feed into the Class 8 capstone — keep those files. In Class 8 you
+   build one page, your portfolio, in five milestones, and those files become its projects.
 
 ## Status
 
-Lessons written: **Classes 1–5**. Assignment breakout folders: **Classes 1–5**.
-`assignments.md` covers **all 8**. Classes 6–8 lessons and folders are in progress.
+Lessons written: **all 8 classes**. Assignment breakout folders: **all 8 classes**.
+`assignments.md` covers **all 8**. The course content is complete.
 
 ## Attribution
 

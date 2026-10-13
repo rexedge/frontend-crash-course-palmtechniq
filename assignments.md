@@ -868,8 +868,8 @@ Take your Class 4 pricing table (Flexbox) and rebuild it with Grid. Take your Cl
 
 # Class 6 — JavaScript Basics
 
-**In scope (adds to Class 5):** `<script>` tag, `let` / `const`, data types (string, number, boolean, `null`, `undefined`), template literals, operators (arithmetic, comparison `===`/`!==`, logical `&&`/`||`/`!`), `if` / `else if` / `else`, ternary, `for` loop, `while` loop, functions (declaration, parameters, `return`), `console.log`, browser dev-tools Console, arrays (create, index, `.length`, `.push`, loop over), basic string methods (`.toUpperCase`, `.toLowerCase`, `.length`, `.includes`, `.slice`), `Math` (`.round`, `.floor`, `.random`, `.max`).
-**Out of scope:** the DOM (`document`, `querySelector`), events — that's Class 7. Everything here runs in the Console or via `console.log`.
+**In scope (adds to Class 5):** `<script src>` at the end of `<body>`, `console.log`, the browser dev-tools Console and reading its error messages, comments, `let` / `const`, data types (string, number, boolean, `null`, `undefined`) and `typeof`, template literals, operators (arithmetic incl. `%` and `**`; shortcuts `+=` / `-=` / `*=` / `++` / `--`; comparison `===` / `!==` / `>` / `<` / `>=` / `<=`; logical `&&` / `||` / `!`), `Number()` and `NaN`, functions (declaration, parameters, `return`, calling one function from another), `if` / `else if` / `else`, ternary, `for` loop, `while` loop, arrays (create, index, `.length`, `.push`, loop over), strings (index, `.length`, `.toUpperCase`, `.toLowerCase`, `.includes`, `.slice`), `Math` (`.round`, `.floor`, `.random`, `.max`, `.PI`).
+**Out of scope:** the DOM (`document`, `querySelector`) and events — that's Class 7. Also not yet: `prompt` / `alert`, objects, arrow functions, array methods beyond `.push` (`.map`, `.filter`, `.forEach`, `.sort`, `.reverse`), `.split` / `.join`, `var`. Everything here runs in the Console via `console.log`.
 
 > For every assignment: write functions in a `.js` file, load it with `<script src="app.js"></script>` at the end of `<body>`, and check output in the Console. No page interaction yet.
 
@@ -879,7 +879,7 @@ Take your Class 4 pricing table (Flexbox) and rebuild it with Grid. Take your Cl
 Declare a `const` for your name, a `let` for your age, a `const` boolean `isStudent`. `console.log` each, then log a single template-literal sentence using all three.
 
 **6.2 — typeof** ⭐
-Log the `typeof` of: `"hi"`, `42`, `true`, `null`, `undefined`, `3.14`, `"7"`, `2 + 2`, `"2" + 2`. Predict each before running; note the two that surprise you.
+Log the `typeof` of: `"hi"`, `42`, `true`, `null`, `undefined`, `3.14`, `"7"`, `2 + 2`, `"2" + 2` — put the two sums in brackets (`typeof (2 + 2)`), or `typeof` only looks at the first value. Predict each before running; note the two that surprise you.
 
 **6.3 — Arithmetic** ⭐
 Given `a = 17`, `b = 5`: log `a + b`, `a - b`, `a * b`, `a / b`, `a % b`, and `a ** 2`. Say in a comment what `%` gave you and why.
@@ -888,27 +888,27 @@ Given `a = 17`, `b = 5`: log `a + b`, `a - b`, `a * b`, `a / b`, `a % b`, and `a
 Predict then verify: `5 == "5"`, `5 === "5"`, `0 === false`, `"" === false`, `10 > 3 && 3 > 5`, `10 > 3 || 3 > 5`, `!(5 > 2)`.
 
 **6.5 — if/else ladder** ⭐
-Write a function `describeNumber(n)` that logs "negative", "zero", or "positive". Call it with 5 different values.
+Write a function `describeNumber(n)` that returns `"negative"`, `"zero"`, or `"positive"`. Log 5 calls, including `0` and a negative decimal. Then reorder the conditions — does anything change, and why not?
 
 **6.6 — Ternary** ⭐
-Rewrite `describeNumber`'s positive/negative decision (ignore zero) as a single `return n >= 0 ? "positive-ish" : "negative"`.
+Write `describeSign(n)` with `if` / `else` (0 or more → `"positive-ish"`, otherwise `"negative"`), then rewrite its body as a single `return n >= 0 ? "positive-ish" : "negative";`. Write two more one-line ternary functions: `evenOrOdd(n)` and `passOrFail(score)` (50 or more passes).
 
 **6.7 — for loop** ⭐
-Log the numbers 1 to 20. Then log only the even ones. Then log them in reverse, 20 down to 1.
+Log the numbers 1 to 20. Then log only the even ones — two ways: a step of 2, and a step of 1 with `if (i % 2 === 0)`. Then log them in reverse, 20 down to 1. Predict the number of lines before each run.
 
 **6.8 — while loop** ⭐
-Using `while`, keep halving `100` (integer or float) and logging the result until it drops below `1`.
+Using `while`, keep halving `100` and logging the result until it drops below `1`. Count the rounds with a second variable (it takes 7). Predict the count for `1000` before you run it.
 
 **6.9 — Array basics** ⭐
-Make an array of 5 city names. Log its `.length`, the first and last elements (last via `arr[arr.length - 1]`), `.push` a 6th, then loop with `for` and log `"City 1: Lagos"` style lines.
+Make an array of 5 city names. Log its `.length`, the first and last elements (last via `arr[arr.length - 1]`), `.push` a 6th, then loop with `for` and log `"City 1: Lagos"` style lines. Finally log `cities[10]` and explain what you get.
 
 **6.10 — String methods** ⭐
-Given `const s = "Frontend Crash Course"`: log its length, uppercase, lowercase, whether it `.includes("Crash")`, and its first word via `.slice`.
+Given `const s = "Frontend Crash Course"`: log its length, uppercase, lowercase, whether it `.includes("Crash")`, and its first word via `.slice`. Slice out the other two words too, then log `s` again — none of the methods changed it. Finish with `shout(text)`, which returns the text in capitals with a `!` on the end.
 
 ### Core assignments — write these as functions with `return`
 
 **6.11 — The classic ten** ⭐⭐
-Implement each. Test each with at least 3 inputs via `console.log`.
+Implement each so it **returns** its answer. Test each with at least 3 inputs via `console.log`. Keep the file — Class 7 wires `celsiusToFahrenheit` to a page.
 1. `add(a, b)` → sum
 2. `isEven(n)` → boolean
 3. `maxOfTwo(a, b)` → the larger
@@ -916,15 +916,15 @@ Implement each. Test each with at least 3 inputs via `console.log`.
 5. `circleArea(r)` → area (use `Math.PI`)
 6. `absoluteValue(n)` → without using `Math.abs`
 7. `average(a, b, c)` → mean of three numbers
-8. `secondsToClock(total)` → `"MM:SS"` string
-9. `initials(fullName)` → e.g. `"Ada Byron King"` → `"ABK"`
-10. `isVowel(char)` → boolean
+8. `secondsToClock(total)` → `"MM:SS"` string, always two digits each side (`75` → `"01:15"`)
+9. `initials(fullName)` → e.g. `"Ada Byron King"` → `"ABK"` (loop over the characters: a letter is an initial if it's first, or comes right after a space)
+10. `isVowel(char)` → boolean, whatever the capitals
 
 **6.12 — Grade calculator** ⭐⭐
-`letterGrade(score)`: 90+ → "A", 80–89 → "B", 70–79 → "C", 60–69 → "D", below 60 → "F". Guard against scores above 100 or below 0 (return `"invalid"`). Test the boundaries (89, 90, 0, 100, -1, 101).
+`letterGrade(score)`: 90+ → "A", 80–89 → "B", 70–79 → "C", 60–69 → "D", below 60 → "F". Guard against scores above 100 or below 0 first (return `"invalid"`), then write the ladder from the top grade down — one comparison per rung. Test the boundaries (89, 90, 0, 100, -1, 101) and both sides of the rest (79/80, 69/70, 59/60).
 
 **6.13 — Ticket pricing** ⭐⭐
-`ticketPrice(age, isWeekend)`: base $12. Under 5 → free. 5–17 → half price. 65+ → $8 flat. Weekend adds $3 to any non-free ticket. Return the final number. Test all branches.
+`ticketPrice(age, isWeekend)`: base $12. Under 5 → free. 5–17 → half price. 65+ → $8 flat. Weekend adds $3 to any non-free ticket — write that rule once, not in every branch. Return the final number. Test all branches (age 3 → `0` either way; 17 → `6` / `9`; 18 → `12` / `15`; 65 → `8` / `11`).
 
 **6.14 — FizzBuzz** ⭐⭐
 Loop 1 to 100. Multiples of 3 → "Fizz", of 5 → "Buzz", of both → "FizzBuzz", else the number. Then refactor the decision into a function `fizzbuzz(n)` that returns the right value, and keep the loop just for logging.
@@ -933,34 +933,34 @@ Loop 1 to 100. Multiples of 3 → "Fizz", of 5 → "Buzz", of both → "FizzBuzz
 Write and test:
 1. `sumTo(n)` → 1 + 2 + … + n
 2. `factorial(n)`
-3. `countVowels(str)`
+3. `countVowels(str)` — capitals count too
 4. `reverseString(str)` (build it with a loop, not `.reverse()`)
-5. `multiplicationTable(n)` → logs the 1×n … 12×n lines
+5. `multiplicationTable(n)` → logs the 1×n … 12×n lines (the one function here that logs instead of returning)
 6. `isPrime(n)` → boolean
-7. `fibonacci(n)` → the nth Fibonacci number
-8. `largestInArray(numbers)` → without `Math.max(...arr)`
+7. `fibonacci(n)` → the nth Fibonacci number (1, 1, 2, 3, 5, 8… so `fibonacci(6)` is `8`)
+8. `largestInArray(numbers)` → without `Math.max` (make sure it works for an array of negative numbers)
 
 **6.16 — Tip / bill splitter** ⭐⭐
-`splitBill(total, tipPercent, people)` → returns the amount **each person pays**, rounded to 2 decimals (`Math.round(x * 100) / 100`). Handle `people = 0` gracefully. Log a formatted summary line with a template literal.
+`splitBill(total, tipPercent, people)` → returns the amount **each person pays**, rounded to 2 decimals (`Math.round(x * 100) / 100`). `splitBill(100, 15, 4)` → `28.75`. Handle `people = 0` gracefully — never return `Infinity` or `NaN`. Log a formatted summary line with a template literal.
 
 **6.17 — Array report** ⭐⭐
-Given an array of daily step counts for a week, write functions: `totalSteps(arr)`, `averageSteps(arr)`, `bestDay(arr)` (returns day number 1–7), `daysAboveGoal(arr, goal)` (returns a count). Loop; no fancy array methods required.
+Given an array of daily step counts for a week (e.g. `[4200, 8100, 10250, 6400, 12050, 3000, 9800]`), write functions: `totalSteps(arr)`, `averageSteps(arr)` (call `totalSteps` — don't repeat the loop), `bestDay(arr)` (returns day number 1–7), `daysAboveGoal(arr, goal)` (returns a count). Loop; no fancy array methods.
 
 **6.18 — Password strength (logic only)** ⭐⭐
-`passwordScore(pw)`: start at 0. +1 if length ≥ 8, +1 if it contains a digit, +1 if it contains an uppercase letter, +1 if it contains a lowercase letter, +1 if length ≥ 12. Return `"weak"` (0–2), `"ok"` (3), `"strong"` (4–5). You may loop character by character and use comparisons / `.toUpperCase()` tricks.
+`passwordScore(pw)`: start at 0. +1 if length ≥ 8, +1 if it contains a digit, +1 if it contains an uppercase letter, +1 if it contains a lowercase letter, +1 if length ≥ 12. Return `"weak"` (0–2), `"ok"` (3), `"strong"` (4–5). Loop over the characters once, with three boolean flags (`hasDigit`, `hasUpper`, `hasLower`). A digit: `c >= "0" && c <= "9"`. An uppercase letter: `c !== c.toLowerCase()`.
 
 **6.19 — Course homework: five logic functions** ⭐⭐ 🧵
-Pick any **five** functions from 6.11 / 6.15 you have not fully nailed and rewrite them from scratch in a fresh file, with 3 test calls each. This is the graded homework — keep the file.
+Pick any **five** functions from 6.11 / 6.15 you have not fully nailed and rewrite them from scratch in a fresh file, without looking at your earlier versions. Include at least one `if`, one loop, and one function that takes an array or a string. A plain-words comment above each, and 3 test calls each (one with an awkward value). This is the graded homework — keep the file.
 
 ### Challenge assignments
 
 **6.20 — Console mini-games (no DOM)** ⭐⭐⭐
-1. `rockPaperScissors(playerMove)` — computer picks randomly (`Math.random`), returns `"win"` / `"lose"` / `"draw"`.
-2. `guessOutcome(secret, guess)` — returns `"too high"`, `"too low"`, or `"correct"`. Then write a loop that simulates a binary-search player and counts guesses.
-3. `rollDice(times)` — rolls two dice `times` times, returns how many rolls totalled 7.
+1. `rockPaperScissors(playerMove)` — computer picks randomly (`Math.random`), returns `"win"` / `"lose"` / `"draw"`. Build it from two smaller functions: `randomMove()` and `roundResult(playerMove, computerMove)` — the second has no randomness, so you can test it properly.
+2. `guessOutcome(secret, guess)` — returns `"too high"`, `"too low"`, or `"correct"`. Then write `countGuesses(secret)`: a `while` loop that simulates a binary-search player on 1–100 (always guess the middle of the remaining range) and returns the number of guesses. It never needs more than 7.
+3. `rollDice(times)` — rolls two dice `times` times, returns how many rolls totalled 7. `rollDice(6000)` should land near 1000.
 
 **6.21 — Simple cart total** ⭐⭐⭐
-Given two parallel arrays `prices` and `quantities`, write `cartTotal(prices, quantities, taxRate)` that returns `{ subtotal, tax, total }` (log the pieces). Add `applyCoupon(total, code)` where `"SAVE10"` gives 10% off and anything else is a no-op.
+Given two parallel arrays `prices` and `quantities` (index `i` in each describes the same item), write `cartSubtotal(prices, quantities)`, `cartTax(subtotal, taxRate)`, and `cartTotal(prices, quantities, taxRate)`, which calls the other two. Round money to 2 decimals and log the three pieces with labels. Add `applyCoupon(total, code)` where `"SAVE10"` gives 10% off and anything else is a no-op. Check: prices `[2500, 1200, 800]`, quantities `[2, 1, 3]`, tax `0.075` → `8600`, `645`, `9245`; with the coupon, `8320.5`. Keep the file — the Class 7 mini cart reuses it. *(stretch)* Return all three pieces at once as an object, `{ subtotal, tax, total }` — objects are beyond this class, so look them up.
 
 **6.22 — Trace the code (predict the Console output)** ⭐⭐⭐
 For each snippet, write down what it logs **before** running, then check.
@@ -1004,6 +1004,14 @@ function mystery(a, b) {
 }
 console.log(mystery(4, 4));
 ```
+```js
+// F
+function shout(word) {
+  word.toUpperCase();
+  return word;
+}
+console.log(shout("hey"));
+```
 
 <details><summary>Show answers</summary>
 
@@ -1012,6 +1020,7 @@ console.log(mystery(4, 4));
 - **C** → `10` (1+2+3+4).
 - **D** → `"11"`, `3`, `2`, `NaN`.
 - **E** → `"equal"`. The `console.log("done")` after `return` is unreachable and never runs.
+- **F** → `"hey"`. String methods return a **new** string; they never change the original, and here the new one is thrown away. Fix: `return word.toUpperCase();`.
 </details>
 
 ### Debug-it
@@ -1054,7 +1063,7 @@ while (i < 5) {
 ```
 <details><summary>Show answer</summary>`i` never changes. Add `i++;` inside the loop.</details>
 
-**(e)** `countVowels("Sky")` returns `0`, but `countVowels("SKY")` should logically match "sky"… and `countVowels("Apple")` returns `1` not `2`:
+**(e)** `countVowels("Apple")` returns `1`, not `2` — and `countVowels("AEIOU")` returns `0`:
 ```js
 function countVowels(str) {
   let count = 0;
@@ -1077,6 +1086,33 @@ for (let i = 0; i < arr.length - 1; i++) {
 ```
 <details><summary>Show answer</summary>`i < arr.length - 1` stops before the last index. Use `i < arr.length`.</details>
 
+**(g)** Nothing appears in the Console at all — no output, and no error:
+```js
+function greet(firstName) {
+  return `Hello, ${firstName}!`;
+}
+greet("Ada");
+```
+<details><summary>Show answer</summary>The function works and is called, but nothing is done with the value it returns. `return` hands the string back; it doesn't show it. `console.log(greet("Ada"));`.</details>
+
+**(h)** Everyone who passes gets a D — `letterGrade(95)` returns `"D"`:
+```js
+function letterGrade(score) {
+  if (score >= 60) {
+    return "D";
+  } else if (score >= 70) {
+    return "C";
+  } else if (score >= 80) {
+    return "B";
+  } else if (score >= 90) {
+    return "A";
+  } else {
+    return "F";
+  }
+}
+```
+<details><summary>Show answer</summary>A ladder takes the **first** true condition and skips the rest; 95 is `>= 60`, so it stops there. Put the strictest test first: `>= 90`, then `80`, `70`, `60`.</details>
+
 ### Written questions
 
 1. `let` vs `const` — when do you use each? What does `const` actually prevent?
@@ -1087,92 +1123,94 @@ for (let i = 0; i < arr.length - 1; i++) {
 6. What does `"3" + 4` produce, and why? What about `"3" * 4`?
 7. When would you choose a `while` loop over a `for` loop?
 8. What is a parameter vs an argument?
+9. What index does an array start at? How do you get its last item, and what do you get for an index that doesn't exist?
+10. The Console shows a red error. What three things does the message tell you, and what do you do first?
 
 ---
 ---
 
 # Class 7 — JavaScript & the DOM
 
-**In scope (adds to Class 6):** `document.querySelector` / `querySelectorAll`, reading/writing `.textContent` and `.value`, `.innerHTML` (and why to be careful), `.style.property`, `.classList` (`.add` / `.remove` / `.toggle` / `.contains`), `.setAttribute` / `.getAttribute`, `addEventListener` for `click`, `input`, `submit`, `change`, `keyup`; the `event` object, `event.target`, `event.preventDefault()`, creating elements (`document.createElement`, `.append`), placing `<script>` correctly (end of body or `defer`).
-**Out of scope:** `fetch` / APIs, `localStorage`, modules, frameworks.
+**In scope (adds to Class 6):** the DOM, `document` and `document.body`; `document.querySelector` / `querySelectorAll`; reading/writing `.textContent`; `.innerHTML` (and why to be careful); `.classList` (`.add` / `.remove` / `.toggle` / `.contains`) and a `.hidden` utility class; `.style.property`; `.setAttribute` / `.getAttribute`; form controls — `.value` (always a string), `.checked`, `.disabled`, and `.trim()`; `addEventListener` for `click`, `input`, `submit`, `change`, `keyup`; the `event` object — `event.target`, `event.key`, `event.preventDefault()`; passing a function by name or as an arrow function `() => { … }`; `.forEach` (item and index); creating and removing elements (`document.createElement`, `.append`, `.remove`); objects (`{ key: value }`, dot access, arrays of objects); placing `<script>` correctly (end of body or `defer`).
+**Out of scope:** `fetch` / APIs, `localStorage`, timers (`setTimeout` / `setInterval`), DOM traversal (`parentElement`, `nextElementSibling`, `closest`), `dataset`, array methods such as `.map` / `.filter` / `.sort`, inline `onclick` attributes, CSS `position` / transitions, modules, libraries and frameworks.
 
 ### Warm-up drills
 
 **7.1 — Select and log** ⭐
-On a page with an `<h1>`, three `<p>`s, and a `<ul>`: log the `<h1>`'s `textContent`, log how many `<p>`s `querySelectorAll` finds, and log the second paragraph's text.
+On a page with an `<h1>`, three `<p>`s, and a `<ul>`: log the `<h1>`'s `textContent`, log how many `<p>`s `querySelectorAll` finds, and log the second paragraph's text. Then log `document.querySelector("h2")` — there isn't one — and see `null`.
 
 **7.2 — Change text on click** ⭐
-A `<button>` and an `<h1>`. Clicking the button changes the `<h1>` text to "Clicked!". Do it from memory 3 times.
+A `<button>` and an `<h1>`. Clicking the button changes the `<h1>` text to "Clicked!". Do it 3 times: with a named function, as an arrow function, then from memory. Finally add brackets after the function's name on purpose and see what goes wrong.
 
 **7.3 — Toggle a class** ⭐
-A paragraph and a button. Define `.highlight { background: yellow; }` in CSS. The button toggles `.highlight` on the paragraph with `classList.toggle`.
+A paragraph and a button. Define `.highlight { background-color: yellow; }` in CSS. The button toggles `highlight` on the paragraph with `classList.toggle`. Then try it with a dot — `toggle(".highlight")` — and inspect the paragraph.
 
 **7.4 — Read an input** ⭐
-A text input and a button. On click, `console.log` whatever is currently in `input.value`.
+A text input and a button. On click, `console.log` whatever is currently in `input.value`, its `typeof`, and its trimmed length. Then move the `.value` read to the top of the file and see why that fails.
 
 **7.5 — input event** ⭐
-A text input and a `<span>`. As you type, the span mirrors the input's value live (`addEventListener("input", …)`).
+A text input and a `<span>`. As you type, the span mirrors the input's value live (`addEventListener("input", …)`). Write it once with `event.target.value`. An empty box shows a fallback such as "nothing yet".
 
 **7.6 — querySelectorAll loop** ⭐
-Five buttons. Loop over them and add a click listener to each that logs `event.target.textContent`.
+Five buttons. Loop over them with `forEach` and add a click listener to each — one shared named function that logs `event.target.textContent`. First try `buttons.addEventListener(…)` on the list itself and read the error.
 
 **7.7 — preventDefault** ⭐
-A `<form>` with one input and a submit button. On `submit`, call `event.preventDefault()` and `console.log("would have submitted")`. Confirm the page no longer reloads.
+A `<form>` with one input and a submit button. On `submit`, call `event.preventDefault()` and `console.log("would have submitted")`. Confirm the page no longer reloads: a `console.log("app.js loaded")` at the top of the file should appear only once.
 
 ### Core assignments
 
 **7.8 — Counter** ⭐⭐
-Buttons: "−", "reset", "+". A number display starting at 0. `+` increments, `−` decrements, "reset" sets it back to 0. Bonus: the number turns red when negative (`classList` + CSS).
+Buttons: "−", "reset", "+". A number display starting at 0. `+` increments, `−` decrements, "reset" sets it back to 0. Keep the number in one `let` outside the functions, and update the page in one `showCount()` function. Bonus: the number turns red when negative (`classList` + CSS).
 
 **7.9 — Light / dark mode toggle** ⭐⭐ 🧵
 Per the course hands-on. A button that toggles a `.dark` class on `<body>`. Define both themes in CSS (light default, `.dark` overrides background/text/link colours). Button label switches between "🌙 Dark" and "☀️ Light".
 
 **7.10 — Contact form "Thank you"** ⭐⭐ 🧵
-Per the course hands-on. Take your contact form. On `submit`: `preventDefault`, hide the form (`classList` or `.hidden`), and show a "✅ Thanks, {name} — we'll be in touch." message that includes the value the user typed in the name field.
+Per the course hands-on. Take your contact form. On `submit`: `preventDefault`, hide the form with a `.hidden` class, and show a "✅ Thanks, {name} — we'll be in touch." message that includes the (trimmed) value the user typed in the name field — written with `textContent`.
 
 **7.11 — Live character counter** ⭐⭐
-A `<textarea maxlength="200">` and a counter showing "0 / 200". On `input`, update the count. When remaining < 20, the counter turns orange; at 0, red.
+A `<textarea maxlength="200">` and a counter showing "0 / 200". On `input`, update the count. When remaining < 20, the counter turns orange; at 0, red. Read the limit from the `maxlength` attribute with `getAttribute`, and clear both colour classes before adding the right one.
 
 **7.12 — Show / hide (accordion)** ⭐⭐ 🧵
-An FAQ list: 5 questions as buttons, each with a hidden answer `<div>` beneath. Clicking a question toggles its answer. Bonus: opening one closes the others.
+An FAQ list: 5 questions as buttons, each with a hidden answer `<div>` beneath. Clicking a question toggles its answer. Link each question to its answer by index: `questions.forEach((question, i) => …)` and `answers[i]`. Bonus: opening one closes the others (and clicking an open one still closes it).
 
 **7.13 — To-do list** ⭐⭐ 🧵
-An input + "Add" button + `<ul>`. Adding creates a new `<li>` with the text and a "×" delete button. Clicking "×" removes that `<li>`. Clicking the `<li>` text toggles a `.done` class (strikethrough). Empty input does nothing.
+A `<form>` with an input and an "Add" button, plus a `<ul>`. Adding creates a new `<li>` holding the text in a `<span>` and a "×" delete button. Clicking "×" removes that `<li>`. Clicking the text toggles a `.done` class (strikethrough). An empty or spaces-only input (`.trim()`) does nothing. Text goes in with `textContent`; no `innerHTML`.
 
 **7.14 — Tab switcher** ⭐⭐
-Three tab buttons and three content panels. Clicking a tab shows its panel and hides the others, and marks the clicked tab "active" (class). Only one panel visible at a time.
+Three tab buttons and three content panels. Clicking a tab shows its panel and hides the others, and marks the clicked tab "active" (class). Only one panel visible at a time. Same index-partner pattern as 7.12: clear them all, then mark the one.
 
 **7.15 — Image gallery** ⭐⭐ 🧵
-A large "main" image and a row of 6 thumbnails. Clicking a thumbnail swaps the main image's `src` (and `alt`) to match, and highlights the active thumbnail.
+A large "main" image and a row of 6 thumbnails. Clicking a thumbnail swaps the main image's `src` (and `alt`) to match — read with `getAttribute`, write with `setAttribute` — and highlights the active thumbnail. Use `https://picsum.photos/seed/<word>/800/600` so each photo stays the same.
 
 **7.16 — Live form validation** ⭐⭐
-A signup form (name, email, password). On `input`, show inline messages: name must be ≥ 2 chars, email must contain "@" and ".", password must be ≥ 8 chars. The submit button is disabled until all three pass. On successful submit: `preventDefault` + success message.
+A signup form (name, email, password). On `input`, show inline messages: name must be ≥ 2 chars, email must contain "@" and ".", password must be ≥ 8 chars. Write one small function per rule that returns `true` / `false`. The submit button is `.disabled` until all three pass. On successful submit: `preventDefault` + success message.
 
 **7.17 — Colour changer** ⭐⭐
-Three range/number inputs or three buttons (or a text input for a hex value). Clicking/typing updates `document.body.style.backgroundColor`. Add a "random colour" button that builds a random hex string with `Math.random`.
+Three preset buttons whose text is a CSS colour name, sharing one handler that uses `event.target`; a text input that applies a hex code once it is `#` plus six characters; and a "random colour" button. Write `randomHexColour()`, which builds its string by picking six random characters from `"0123456789abcdef"`. Each one updates `document.body.style.backgroundColor`.
 
 **7.18 — Temperature converter UI** ⭐⭐ 🧵
-Wire your Class 6 `celsiusToFahrenheit` function to the page: a number input for °C, and as the user types (`input` event) a `<span>` shows the °F result. Add a second row for °F → °C.
+Wire your Class 6 `celsiusToFahrenheit` function to the page, unchanged: a number input for °C, and as the user types (`input` event) a `<span>` shows the °F result, rounded to 1 decimal. Add a second row for °F → °C. An empty box shows "—" — remember `Number("")` is `0`.
 
 **7.19 — Course homework: add interactivity to earlier pages** ⭐⭐ 🧵
-Per the course homework — add **one** interactive feature to each of these earlier builds:
-- About Me page → a "read more" toggle that expands a hidden bio paragraph.
-- Gallery → click an image to enlarge it (toggle a `.big` class).
-- Blog homepage → a "filter" that hides articles not matching a typed keyword (compare `input.value` against each article's `textContent` with `.includes`).
+Per the course homework — add one new interactive feature to an earlier page. Three options; do at least one, all three if you can:
+- About Me page → a "read more" toggle that expands a hidden bio paragraph, with the button text switching to "Read less".
+- Gallery → click an image to enlarge it (toggle a `.big` class that spans 2 × 2 — inside the `min-width` media query).
+- Blog homepage → a "filter" that hides articles not matching a typed keyword (compare the lower-cased `input.value` against each article's lower-cased `textContent` with `.includes`).
 
 ### Challenge assignments
 
 **7.20 — Quiz app** ⭐⭐⭐
-5 multiple-choice questions rendered on the page. The user picks answers (radio groups). A "Submit" button tallies the score with `preventDefault`, then shows "You scored 4 / 5" and marks each question right/wrong with colour. A "Try again" button resets everything.
+5 multiple-choice questions written in the HTML. The user picks answers (radio groups). A "Submit" button tallies the score with `preventDefault`, then shows "You scored 4 / 5" and marks each question right/wrong with colour. A "Try again" button resets everything. Give each question's radios a shared class, loop over them checking `.checked`, and keep the correct answers in one array.
 
 **7.21 — Mini shopping cart** ⭐⭐⭐
-A list of 4 products, each with an "Add to cart" button. A cart panel shows added items, a quantity per item ("+"/"−"), a live subtotal, and a "Remove" button. Reuse your Class 6 `cartTotal` logic for the maths.
+A list of 4 products, each with an "Add to cart" button. A cart panel shows added items, a quantity per item ("+"/"−"), a live subtotal, and a "Remove" button. Keep names, prices and quantities in parallel arrays; after every change, empty the cart list and rebuild it from the arrays. Reuse your Class 6 `cartSubtotal` / `cartTotal` logic for the maths.
 
 **7.22 — Build the DOM from data** ⭐⭐⭐
-Start with an array of objects in JS (e.g. 6 movies with `title`, `year`, `rating`). On page load, loop the array and `createElement` a card for each, appending to a container. Add a button that sorts by rating and re-renders.
+Start with an array of objects in JS (e.g. 6 movies with `title`, `year`, `rating`). On page load, loop the array and `createElement` a card for each, appending to a container. Add buttons that re-render only the films rated 8 or more, and then all of them again — one `showMovies(minimumRating)` function does both. *(stretch)* A button that sorts by rating; `.sort()` is beyond this class.
 
 **7.23 — Rebuild a component you've used** ⭐⭐⭐
-Pick one: an image carousel with prev/next buttons, a star-rating widget (hover + click), or a multi-step form (Next/Back between 3 fieldsets with a progress indicator). Plain JS only.
+Pick one: an image carousel with prev/next buttons that wrap around, a star-rating widget (click to rate; a hover preview is a *(stretch)*), or a multi-step form (Next/Back between 3 fieldsets with a progress indicator). One `let` holds the position; one function redraws the page from it. Plain JS only.
 
 ### Debug-it
 
@@ -1184,53 +1222,81 @@ Pick one: an image carousel with prev/next buttons, a star-rating widget (hover 
   <script src="app.js"></script>
 </head>
 <body>
-  <button id="go">Go</button>
+  <button type="button" id="go">Go</button>
 </body>
 ```
 ```js
-document.querySelector("#go").addEventListener("click", () => console.log("hi"));
+const goButton = document.querySelector("#go");
+goButton.addEventListener("click", () => {
+  console.log("hi");
+});
 ```
-<details><summary>Show answer</summary>The script runs before the `<button>` exists. Move `<script>` to the end of `<body>`, or add `defer`: `<script src="app.js" defer></script>`.</details>
+<details><summary>Show answer</summary>The script runs before the `<button>` exists, so `querySelector` returns `null`. Move `<script>` to the end of `<body>`, or add `defer`: `<script src="app.js" defer></script>`.</details>
 
-**(b)** The selector finds nothing:
+**(b)** `Cannot read properties of null (reading 'classList')`:
+```html
+<div class="box">A box</div>
+<script src="app.js"></script>
+```
 ```js
 const box = document.querySelector("box");
+box.classList.add("open");
 ```
-```html
-<div class="box"></div>
-```
-<details><summary>Show answer</summary>`querySelector` takes a CSS selector. `"box"` looks for a `<box>` tag. Use `".box"` for the class (or `"#box"` for an id).</details>
+<details><summary>Show answer</summary>The script is in the right place this time — the selector is wrong. `querySelector` takes a CSS selector, and `"box"` looks for a `<box>` tag. Use `".box"` for the class (or `"#box"` for an id).</details>
 
-**(c)** Clicking the button reloads the page and loses everything:
+**(c)** "Sent!" flashes for an instant, then the form is empty again:
 ```js
 form.addEventListener("submit", () => {
   message.textContent = "Sent!";
 });
 ```
-<details><summary>Show answer</summary>The form still does its default submit/reload. Take the event and call it: `form.addEventListener("submit", (e) => { e.preventDefault(); message.textContent = "Sent!"; });`</details>
+<details><summary>Show answer</summary>The form still does its default submit and reloads the page, throwing the change away. Take the event and cancel the default first: `form.addEventListener("submit", (event) => { event.preventDefault(); message.textContent = "Sent!"; });`</details>
 
-**(d)** Only the last button works:
+**(d)** `buttons.addEventListener is not a function`:
 ```js
 const buttons = document.querySelectorAll("button");
-buttons.addEventListener("click", () => console.log("clicked"));
-```
-<details><summary>Show answer</summary>`querySelectorAll` returns a NodeList, which has no `addEventListener`. Loop it: `buttons.forEach(btn => btn.addEventListener("click", …))`.</details>
-
-**(e)** Text shows literally as `<b>hi</b>` on the page:
-```js
-el.textContent = "<b>hi</b>";
-```
-<details><summary>Show answer</summary>Not necessarily a bug — `textContent` escapes HTML (that's the safe behaviour). If you truly want bold, use `el.innerHTML = "<b>hi</b>"` — but never do that with untrusted user input.</details>
-
-**(f)** The counter shows `"01"`, `"011"`, `"0111"`:
-```js
-let count = 0;
-btn.addEventListener("click", () => {
-  count = count + btn.dataset.step; // step is "1"
-  display.textContent = count;
+buttons.addEventListener("click", () => {
+  console.log("clicked");
 });
 ```
-<details><summary>Show answer</summary>`btn.dataset.step` is the string `"1"`, so `+` concatenates. Convert: `count = count + Number(btn.dataset.step);`</details>
+<details><summary>Show answer</summary>`querySelectorAll` returns a list, which has no `addEventListener` — only the elements inside it do. Loop it: `buttons.forEach((button) => { button.addEventListener("click", …); });`</details>
+
+**(e)** The page shows the tags as text, instead of a link:
+```js
+footerNote.textContent = `<a href="#top">Back to top</a>`;
+```
+<details><summary>Show answer</summary>Not necessarily a bug — `textContent` treats everything as plain text (that's the safe behaviour). Because you wrote this HTML yourself, `footerNote.innerHTML = …` is fine here — but never do that with anything a user typed.</details>
+
+**(f)** The running total shows `05`, then `055`, then `0555`:
+```html
+<input type="number" id="amount" value="5">
+```
+```js
+let total = 0;
+addButton.addEventListener("click", () => {
+  total = total + amountInput.value;
+  totalDisplay.textContent = total;
+});
+```
+<details><summary>Show answer</summary>`.value` is always a string, even from a `type="number"` input, so `+` joins instead of adding. Convert: `total = total + Number(amountInput.value);`</details>
+
+**(g)** The message is already there when the page loads, and clicking does nothing:
+```js
+function showGreeting() {
+  greeting.textContent = "Hello there!";
+}
+helloButton.addEventListener("click", showGreeting());
+```
+<details><summary>Show answer</summary>The brackets. `showGreeting()` calls the function straight away, at page load, and hands `addEventListener` its return value (`undefined`). Pass the function itself: `helloButton.addEventListener("click", showGreeting);`</details>
+
+**(h)** It always says "You typed: " and nothing else:
+```js
+const typed = nameInput.value;
+showButton.addEventListener("click", () => {
+  output.textContent = `You typed: ${typed}`;
+});
+```
+<details><summary>Show answer</summary>`nameInput.value` is read once, at the top of the file, when the box is still empty. Read it inside the function, so it's read afresh on every click: `` output.textContent = `You typed: ${nameInput.value}`; ``</details>
 
 ### Written questions
 
@@ -1242,6 +1308,8 @@ btn.addEventListener("click", () => {
 6. What is `event.target`? Why is it useful when one listener covers many elements?
 7. Describe three things `classList` lets you do, and why toggling a class is often better than setting `.style` directly.
 8. Walk through, in order, what happens from "user clicks button" to "page text changes".
+9. In `button.addEventListener("click", handleClick)`, why are there no brackets after `handleClick`? What happens if you add them?
+10. What type is `input.value`, even for `type="number"`? What do you do before using it in a sum, and what's the catch with an empty box?
 
 ---
 ---
@@ -1249,6 +1317,9 @@ btn.addEventListener("click", () => {
 # Class 8 — Capstone: Portfolio Project
 
 **Goal:** one responsive, interactive personal portfolio page (or small multi-page site) that uses everything: semantic HTML, external CSS with a real layout (Flexbox **and** Grid), responsiveness (mobile-first + at least one media query or fluid technique), and JavaScript interactivity (DOM + events).
+
+**In scope (adds to Class 7):** in-page links — `<a href="#contact">` jumps to the element with `id="contact"`. Nothing else is new: the capstone is Classes 1–7, combined on one page.
+**Still out of scope:** everything the course never taught — CSS `position`, transitions / animations, `:hover`, CSS variables; `localStorage`, timers, scroll events, the clipboard, `fetch`; libraries and frameworks. Where an item below reaches past that, it is marked *(stretch)*.
 
 You'll deliver **one** main project. The variants and stretch goals below are extra practice, not required.
 
@@ -1259,8 +1330,8 @@ You'll deliver **one** main project. The variants and stretch goals below are ex
 
 Required structure (semantic):
 - [ ] `<header>` with your name/logo and a `<nav>` (real in-page anchor links: `#about`, `#projects`, `#contact`)
-- [ ] a hero `<section>`: heading, one-line pitch, a call-to-action button/link
 - [ ] `<main>` containing:
+  - [ ] a hero `<section>`: the page's one `<h1>`, a one-line pitch, a call-to-action button/link
   - [ ] `#about` — a `<section>` with a short bio and a photo (`<figure>` + `<figcaption>` optional)
   - [ ] `#skills` — a list or grid of skills
   - [ ] `#projects` — **at least 3** project cards in a Grid (title, image/placeholder, description, a link)
@@ -1269,7 +1340,7 @@ Required structure (semantic):
 
 Required CSS:
 - [ ] external `style.css`, no inline styles
-- [ ] a defined type scale and a small spacing scale, used consistently
+- [ ] a defined type scale and a small spacing scale — written in a comment at the top of the stylesheet, and used consistently
 - [ ] `box-sizing: border-box` globally
 - [ ] the nav laid out with **Flexbox**
 - [ ] the projects section laid out with **CSS Grid**
@@ -1278,14 +1349,14 @@ Required CSS:
 - [ ] images never overflow their containers
 
 Required JavaScript (`app.js`, loaded with `defer` or at end of body):
-- [ ] a light/dark theme toggle that persists visually for the session (class on `<body>`)
+- [ ] a light/dark theme toggle (a class on `<body>`) that restyles **every** part of the page. It resets on reload — remembering the choice needs `localStorage` *(stretch)*
 - [ ] the contact form: on submit, `preventDefault` and show an inline "thank you, {name}" confirmation
-- [ ] **one more** interaction of your choice: a projects filter, a "back to top" button that appears on scroll, an accordion for project details, a mobile nav toggle, an image lightbox, or a typing/count-up animation in the hero
+- [ ] **one more** interaction of your choice: a projects filter, a "more details" toggle on each project card, a mobile nav toggle, or a screenshot gallery with thumbnails. *(stretch — these need things no class teaches)* a "back to top" button that appears on scroll, a pop-up image lightbox, or a typing/count-up animation in the hero
 
 Definition of done:
 - [ ] Opens with Live Server with zero Console errors
 - [ ] Every nav link jumps to the right section
-- [ ] Resize from 320px to 1440px — nothing breaks, overlaps, or overflows
+- [ ] Resize from 320px to 1440px — nothing breaks, overlaps, or overflows — in both themes
 - [ ] A stranger could read it and know who you are and what you can do
 - [ ] All code is your own, typed by hand, and you can explain any line if asked
 
@@ -1294,16 +1365,18 @@ Definition of done:
 1. **Content first, no CSS.** Full semantic HTML with real text and placeholder images. It should be readable and correctly structured with zero styling.
 2. **Mobile CSS.** Style the single-column phone layout: type, colour, spacing, images. No layout tricks yet.
 3. **Layout + responsive.** Add Flexbox nav, Grid projects, media queries / fluid units for tablet and desktop.
-4. **JavaScript.** Theme toggle, form handler, your third interaction.
+4. **JavaScript.** Theme toggle, form handler, your third interaction — one at a time, each working before the next.
 5. **Polish + test.** Cross-width testing, Console clean-up, `alt` text pass, contrast check, spacing consistency, remove dead code.
+
+Keep a copy of the folder after each milestone, so there is always a version that worked.
 
 ### Variant briefs — extra reps, pick any
 
-**8.2 — Photographer portfolio** ⭐⭐⭐ — hero is a full-bleed image; `#projects` becomes a masonry-ish responsive gallery (Grid `auto-fit`/`minmax`); JS lightbox to view photos large.
-**8.3 — Small-business landing page** ⭐⭐⭐ — for a made-up café/gym/salon: hero with CTA, services grid, hours table, testimonials row (Flexbox), map placeholder, contact form. JS: mobile nav toggle + an FAQ accordion.
-**8.4 — Product / app landing page** ⭐⭐⭐ — features grid, a pricing section (3 tiers, Flexbox, middle one featured), FAQ accordion, email capture form. JS: pricing "monthly/yearly" toggle that updates the prices, plus form handler.
-**8.5 — Recipe site** ⭐⭐⭐ — a homepage grid of recipe cards + one recipe detail page (semantic `<article>`, ingredients list, ordered steps, a servings scaler in JS that multiplies the ingredient amounts).
-**8.6 — Link-in-bio page** ⭐⭐ — single screen, centred column, avatar, name, bio, a stack of big link buttons, a theme toggle, and a "copy my email" button (JS writes to clipboard or just reveals it). Great if you're short on time.
+**8.2 — Photographer portfolio** ⭐⭐⭐ — hero is a full-bleed image (`background-image` + `background-size: cover`); `#projects` becomes a masonry-ish responsive gallery (Grid `auto-fit`/`minmax`, with a few photos spanning two rows inside a media query); JS photo viewer — clicking a photo swaps the gallery for that photo shown large, with its caption, "Previous" / "Next" buttons that wrap round, and "Back to the gallery". *(stretch)* A true lightbox that pops up over the page — it needs `position`.
+**8.3 — Small-business landing page** ⭐⭐⭐ — for a made-up café/gym/salon: hero with CTA, services grid, hours table, testimonials row (Flexbox), map placeholder, contact form. JS: mobile nav toggle (a "Menu" button that only shows below your breakpoint) + an FAQ accordion.
+**8.4 — Product / app landing page** ⭐⭐⭐ — features grid, a pricing section (3 tiers, Flexbox, middle one featured), FAQ accordion, email capture form. JS: pricing "monthly/yearly" toggle that updates the prices — keep the monthly prices in one array and work out the yearly ones (10 × monthly: "two months free") — plus form handler.
+**8.5 — Recipe site** ⭐⭐⭐ — a homepage grid of recipe cards + one recipe detail page (semantic `<article>`, ingredients list, ordered steps, a servings scaler in JS that multiplies the ingredient amounts). Keep the ingredients as an array of objects (`name`, `amount`, `unit`) and rebuild the list from it whenever the servings box changes.
+**8.6 — Link-in-bio page** ⭐⭐ — single screen, centred column, avatar, name, bio, a stack of big link buttons, a theme toggle, and a "show my email" button that reveals it. *(stretch)* A "copy my email" button — writing to the clipboard is beyond this course. Great if you're short on time.
 
 ### Stretch goals (only after the core brief is done)
 
@@ -1312,6 +1385,101 @@ Definition of done:
 **8.9 — Real content pass** ⭐⭐ — replace every "Lorem ipsum" and placeholder image with real writing and real (or properly-licensed) images. Write actual project case studies: problem, what you built, what you learned.
 **8.10 — Accessibility pass** ⭐⭐⭐ — keyboard-only navigation works, focus states are visible, colour contrast passes, headings are in order, form errors are announced in text (not just colour), every image has meaningful `alt`.
 **8.11 — Performance & polish** ⭐⭐ — compress images, remove unused CSS, add a favicon, set the `<title>` and a `<meta name="description">`, check it loads fast.
+
+### Debug-it
+
+**8.12 — A broken portfolio** ⭐⭐⭐
+Each case is a finished portfolio with **one** thing wrong. In most of them two files disagree with each other — and only two of the eight give a red error.
+
+**(a)** The "Projects" link in the nav does nothing:
+```html
+<a href="#project">Projects</a>
+…
+<section id="projects">
+```
+<details><summary>Show answer</summary>The `href` says `#project`; the `id` is `projects`. They must match exactly — spelling and capitals. There's no error, because a link to an id that isn't on the page simply stays where it is.</details>
+
+**(b)** Click "CSS": the line says "Showing 2 of 6 projects" — but all six cards are still there:
+```css
+.hidden {
+  display: none;
+}
+
+/* …further down the file… */
+.project {
+  display: flex;
+  flex-direction: column;
+}
+```
+<details><summary>Show answer</summary>The JavaScript is right: four cards do have `hidden` (look in the Elements panel). Both selectors are one class, so they're equally strong and the later one wins — `.project`'s `display: flex` beats `display: none`. Move `.hidden` to the very end of the stylesheet. (The contact form still hides, because nothing else sets its `display`.)</details>
+
+**(c)** Dark mode: the page goes dark, but the project cards stay white — and their text almost vanishes:
+```css
+.project .dark {
+  background-color: #1e1e1e;
+  border: 1px solid #333333;
+}
+```
+<details><summary>Show answer</summary>The selector is backwards. `.project .dark` means "something with the class `dark`, **inside** a `.project`". But `dark` is on `<body>`, which is outside the cards: write `.dark .project`. The text fades because the cards still inherit the pale text colour from `<body>` — pale text on a white card.</details>
+
+**(d)** The theme button is dead — and so are the filter and the form, which reloads the page. The Console says `Cannot read properties of null (reading 'addEventListener')`:
+```html
+<button type="button" id="theme-toggle">🌙 Dark</button>
+```
+```js
+const themeToggle = document.querySelector("#themeToggle");
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
+
+// …the form and the filter are below…
+```
+<details><summary>Show answer</summary>The `id` in the HTML is `theme-toggle`; the selector asks for `themeToggle`. `querySelector` gives back `null`, the next line throws — and **the script stops there**. Nothing below it ever runs, including the form's `preventDefault`. The variable is camelCase, but the selector string has to match the HTML: `"#theme-toggle"`. Always fix the first red error first.</details>
+
+**(e)** The "JavaScript" filter says "Showing 0 of 6 projects":
+```html
+<button type="button" class="filter">JavaScript</button>
+…
+<p class="tag">Javascript</p>
+```
+<details><summary>Show answer</summary>`===` compares strings exactly, and `"Javascript"` is not `"JavaScript"`. There's no error, because the code is fine — it's the data that doesn't match. Make the tag's text identical to the button's. (To be more forgiving, compare `.toLowerCase()` copies of both.)</details>
+
+**(f)** Fine at 375px — but at 320px the whole page scrolls sideways:
+```css
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 24px;
+}
+```
+<details><summary>Show answer</summary>`minmax(330px, 1fr)` promises every column at least 330px. A 320px phone with 16px of padding on each side has only 288px of room, so the column sticks out and the page scrolls. At 375px there's just enough room (about 337px), which is why it looked fine. Use a smaller minimum, such as 260px — and always test at 320px.</details>
+
+**(g)** Sending the form does nothing. The Console says `Cannot read properties of undefined (reading 'trim')`:
+```html
+<p class="brand" id="name">Ada Lovelace</p>
+…
+<input type="text" id="name" name="name" required>
+```
+```js
+const nameInput = document.querySelector("#name");
+…
+const visitorName = nameInput.value.trim();
+```
+<details><summary>Show answer</summary>Two elements share `id="name"`. `querySelector` returns the **first** one — the `<p>` in the header — and a paragraph has no `.value`, so that's `undefined`, and `undefined` has no `.trim()`. An `id` must be unique on the page. Take the `id` off the paragraph (or rename it).</details>
+
+**(h)** In dark mode, the hero button's text turns pale blue — on a blue button:
+```css
+.button {
+  color: #ffffff;
+  background-color: #1a56db;
+}
+
+.dark a {
+  color: #8ab4f8;
+}
+```
+<details><summary>Show answer</summary>The hero button is a link: `<a class="button">`. `.dark a` (a class plus an element) is more specific than `.button` (one class), so it wins whichever order they're in. Add a stronger rule: `.dark .button { color: #ffffff; }`.</details>
 
 ### Peer-review rubric (use on your own work and a classmate's)
 
